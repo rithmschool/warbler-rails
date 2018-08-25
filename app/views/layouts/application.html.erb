@@ -27,7 +27,6 @@
         </form> %>
       </li>
       <% if current_user %>
-        <p>sup</p>
         <%# <li>
           <a href="{{ url_for('users_show', user_id=current_user.id) }}">
             <img src="{{ current_user.image_url }}" alt="{{ current_user.username }}">
@@ -36,9 +35,10 @@
         <li>
           <a href="{{ url_for('messages_new', user_id=current_user.id) }}">New Message</a>
         </li>
+        %>
         <li>
-          <a href="{{ url_for('users_logout') }}">Log out</a>
-        </li> %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        </li>
       <% else %>
         <li>
           <%= link_to "Sign up", new_user_registration_path %>
@@ -55,7 +55,7 @@
     <div class="alert alert-danger"><%= alert %></div>
   <% end %>
   <% if notice %>
-    <div class="alert alert-warning"><%= notice %></div>
+    <div class="alert alert-success"><%= notice %></div>
   <% end %>
   <%= yield %>
 </div>
