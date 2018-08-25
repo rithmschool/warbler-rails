@@ -1,17 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>WarblerRails</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>WarblerRails</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body class="<%= 'onboarding' if request.path == '/users/sign_up' || request.path == '/users/sign_in'%>">
+  <nav class="navbar navbar-expand">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "warbler-logo" %>
+        <span>Warbler</span>
+      <% end %>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%# <form class="navbar-form navbar-right" action={{ url_for( 'users_index') }} method='GET'>
+          <input type="text" name="q" class="form-control" placeholder="Search Warbler" id="search">
+          <button type="submit" class="btn btn-default">
+            <span class="fa fa-search"></span>
+          </button>
+        </form> %>
+      </li>
+      <% if current_user %>
+        <p>sup</p>
+        <%# <li>
+          <a href="{{ url_for('users_show', user_id=current_user.id) }}">
+            <img src="{{ current_user.image_url }}" alt="{{ current_user.username }}">
+          </a>
+        </li>
+        <li>
+          <a href="{{ url_for('messages_new', user_id=current_user.id) }}">New Message</a>
+        </li>
+        <li>
+          <a href="{{ url_for('users_logout') }}">Log out</a>
+        </li> %>
+      <% else %>
+        <li>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "Log in", new_user_session_path %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <% if alert %>
+    <div class="alert alert-danger"><%= alert %></div>
+  <% end %>
+  <% if notice %>
+    <div class="alert alert-warning"><%= notice %></div>
+  <% end %>
+  <%= yield %>
+</div>
+</body>
 </html>
