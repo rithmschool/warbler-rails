@@ -1,0 +1,124 @@
+.navbar {
+  background-color: #fff;
+  height: 46px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 9999;
+
+  a {
+    color: $navdarkgray;
+    font-size: 13px;
+    font-weight: bold;
+
+    &:hover {
+      color: #1c94e0;
+    }
+  }
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+
+  & > img {
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-right: 5px;
+    width: 20px;
+    border-radius: 2px;
+  }
+}
+
+.nav > li > a > img {
+  width: 32px;
+  border-radius: 32px;
+}
+
+ul.nav.navbar-nav {
+  align-items: center;
+
+  li {
+    margin: 0 0.5rem;
+    display: flex;
+  }
+}
+
+nav form.navbar-form {
+  display: flex;
+  position: relative;
+}
+
+nav + .container {
+  margin-bottom: 1rem;
+}
+
+#search.form-control {
+  border-radius: 20px;
+  margin-bottom: 0;
+  width: 100%;
+  font-size: 13px;
+  padding-right: 28px;
+  box-sizing: border-box;
+
+  & + .btn {
+    position: absolute;
+    right: 9px;
+    top: 2px;
+    bottom: 4px;
+    z-index: 1;
+    padding: 0;
+    color: $navdarkgray;
+  }
+
+  & + .btn:active,
+  & + .btn:focus {
+    box-shadow: none;
+  }
+}
+
+#search:active,
+#search:focus {
+  box-shadow: none;
+  border: 2px solid #007bff;
+}
+
+.onboarding > .navbar {
+  background-image: url("/images/nav-bg.png");
+  background-size: 100% 100%;
+}
+
+.onboarding {
+  background-color: #fff;
+
+  .navbar-header {
+    margin: 0 auto;
+  }
+
+  .navbar-brand {
+    margin: 0;
+
+    span {
+      display: none;
+    }
+  }
+
+  .nav.navbar-nav.navbar-right {
+    position: absolute;
+    right: 16px;
+  }
+
+  & > .navbar a {
+    color: #fff;
+  }
+
+  & > .navbar form.navbar-form {
+    display: none;
+  }
+}
+
+@media (max-width: 468px) {
+  nav form.navbar-form {
+    display: none;
+  }
+}

@@ -1,0 +1,32 @@
+<div class="row justify-content-md-center">
+  <div class="col-md-4">
+    <h2 class="join-message">Join Warbler today.</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.text_field :username, autofocus: true, class: "form-control", autocomplete: "username", placeholder: "Username" %>
+      </div>
+
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, class: "form-control", autocomplete: "email", placeholder: "E-mail" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, class: "form-control", autocomplete: "new-password", placeholder: "Password" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password", placeholder: "Confirm Password" %>
+      </div>
+
+      <div class="field">
+        <%= f.text_field :image_url, autofocus: true, class: "form-control", autocomplete: "image_url", value: "", placeholder: "(Optional) Image URL" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign me up!", class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+    <% end %>
+  </div>
+</div>
