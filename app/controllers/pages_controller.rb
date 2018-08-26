@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     if current_user
-      'you are signed in'
+      @messages = Message.order('created_at').limit(100)
     end
   end
 end

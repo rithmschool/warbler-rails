@@ -36,7 +36,7 @@ users.each do |user|
   num_messages = Faker::Number.between(1, 5)
   Message.create(Array.new(num_messages) do |i|
     {
-      text: Faker::Hipster.paragraph_by_chars(280),
+      text: Faker::Hipster.paragraph_by_chars(Faker::Number.between(30, 280)),
       user_id: user.id,
       created_at: Faker::Date.between(2.years.ago, Date.today)
     }
