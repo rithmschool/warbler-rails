@@ -16,7 +16,6 @@
                 <%= form_for current_user.followee_relationships.find_by(followee_id: @message.user.id), method: :delete do |f| %>
                   <%= f.submit "Unfollow", class: "btn btn-primary btn-sm" %>
                 <% end %>
-                <%= link_to "Unfollow", relationship_path(@message.user.id), method: :delete, class: "btn btn-primary" %>
               <% else %>
                 <%= form_for current_user.follower_relationships.new do |f| %>
                   <%= hidden_field_tag :followee_id, @message.user.id %>
