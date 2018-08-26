@@ -1,0 +1,61 @@
+<% content_for :user_page do %>
+  <div id="warbler-hero" class="full-width" style="background-image: url('/images/warbler-hero.jpg');"></div>
+  <%= image_tag @user.image_url, id: "profile-avatar" %>
+  <div class="row full-width">
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-9">
+          <ul class="user-stats nav nav-pills">
+            <li class="stat">
+              <p class="small">Messages</p>
+              <h4>
+                <%= link_to @user.messages.count, user_path(@user.id) %>
+              </h4>
+            </li>
+            <li class="stat">
+              <p class="small">Following</p>
+              <h4>
+                <%= link_to @user.following.count, following_user_path(@user.id)%>
+              </h4>
+            </li>
+            <li class="stat">
+              <p class="small">Followers</p>
+              <h4>
+                <%= link_to @user.followers.count, followers_user_path(@user.id)%>
+              </h4>
+            </li>
+            <li class="stat">
+              <p class="small">Likes</p>
+              <h4>TBD</h4>
+            </li>
+            <div class="ml-auto">
+              <% if current_user && current_user.id == @user.id %>
+                <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-secondary" %>
+                <%= link_to "Delete Profile", cancel_user_registration_path, class: "btn btn-outline-danger ml-2"%>
+              <% elsif current_user %>
+                <% if current_user.is_following?(@user) %>
+                  <%= form_for current_user.followee_relationships.find_by(followee_id: @user.id), method: :delete do |f| %>
+                    <%= f.submit "Unfollow", class: "btn btn-primary" %>
+                  <% end %>
+                <% else %>
+                  <%= form_for current_user.follower_relationships.new do |f| %>
+                    <%= hidden_field_tag :followee_id, @user.id %>
+                    <%= f.submit "Follow", class: "btn btn-outline-primary" %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <h4 id="sidebar-username">@<%= @user.username %></h4>
+    </div>
+      <%= yield %>
+    </div>
+  </div>
+<% end %>
+<%= render template: "layouts/application" %>

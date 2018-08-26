@@ -56,7 +56,7 @@
   <% if notice %>
     <div class="alert alert-success"><%= notice %></div>
   <% end %>
-  <%= yield %>
+  <%= content_for?(:user_page) ? yield(:user_page) : yield %>
 </div>
 </body>
 </html>
