@@ -27,15 +27,14 @@
         </form> %>
       </li>
       <% if current_user %>
-        <%# <li>
-          <a href="{{ url_for('users_show', user_id=current_user.id) }}">
-            <img src="{{ current_user.image_url }}" alt="{{ current_user.username }}">
-          </a>
+        <li>
+          <%= link_to user_path(current_user.id) do %>
+            <%= image_tag current_user.image_url %>
+          <% end %>
         </li>
         <li>
-          <a href="{{ url_for('messages_new', user_id=current_user.id) }}">New Message</a>
-        </li>
-        %>
+          <%= link_to "New Message", new_message_path %>
+        </li>    
         <li>
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
         </li>
