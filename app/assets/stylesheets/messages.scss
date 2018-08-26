@@ -1,3 +1,32 @@
-// Place all the styles related to the messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #62676c;
+}
+
+#messages.no-hover {
+  .message-area {
+    width: 100%;
+  }
+
+  .message-heading {
+    display: flex;
+    justify-content: space-between;
+    height: 47px;
+    margin-top: 3px;
+  }
+
+  .message-heading .btn {
+    min-width: 105px;
+  }
+}
+
+.single-message {
+  font-size: 27px;
+  line-height: 32px;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}

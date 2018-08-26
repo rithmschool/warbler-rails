@@ -38,3 +38,41 @@
     background: rgba(255, 255, 255, 0.3);
   }
 }
+
+#home-aside {
+  & > .user-card {
+    margin-top: 0;
+    padding-bottom: 80%;
+    overflow: hidden;
+  }
+
+  & > .user-card .card-link {
+    display: flex;
+  }
+
+  & > .user-card .card-link > p {
+    margin-left: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  & > .user-card .stat {
+    padding: 14px 0 7px;
+  }
+
+  & > .user-card .user-stats {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  & > .user-card > div {
+    width: 100%;
+  }
+
+  .card-link > p {
+    position: relative;
+  }
+
+  .stat h4 {
+    text-align: left;
+  }
+}
