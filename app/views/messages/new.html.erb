@@ -1,2 +1,13 @@
-<h1>Messages#new</h1>
-<p>Find me in app/views/messages/new.html.erb</p>
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <%= form_for @message do |f| %>
+      <% if @message.errors.any? %>
+        <% @message.errors.full_messages.each do |msg| %>
+          <span class="text-danger"><%= msg %></span>
+        <% end %>
+      <% end %>
+      <%= f.text_area :text, placeholder: "What's happening?", class: "form-control", rows: "3" %>
+      <%= f.submit "Add my message!", class: "btn btn-outline-success btn-block" %>
+    <% end %>
+  </div>
+</div>
