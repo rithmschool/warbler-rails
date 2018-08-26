@@ -1,6 +1,6 @@
 # set up image data
 profile_urls = []
-0.upto(100) do |i|
+0.upto(99) do |i|
   profile_urls.push "https://randomuser.me/api/portraits/lego/#{i}.jpg" unless i > 9
   profile_urls.push "https://randomuser.me/api/portraits/women/#{i}.jpg"
   profile_urls.push "https://randomuser.me/api/portraits/men/#{i}.jpg"
