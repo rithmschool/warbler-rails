@@ -20,7 +20,7 @@
           <li class="stat">
             <p class="small">Following</p>
             <h4>
-              <%= link_to current_user.followees.count, following_user_path(current_user.id) %>
+              <%= link_to current_user.following.count, following_user_path(current_user.id) %>
             </h4>
           </li>
           <li class="stat">

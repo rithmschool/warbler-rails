@@ -12,18 +12,18 @@ class User < ApplicationRecord
                                     dependent: :destroy
 
   has_many :followers, through: :followee_relationships, source: :follower
-  has_many :followees, through: :follower_relationships, source: :followee
+  has_many :following, through: :follower_relationships, source: :followee
 
   def follow(user)
-    followees << user
+    following << user
   end
 
   def unfollow(user)
-    followees.delete(user)
+    following.delete(user)
   end
 
   def is_following?(user)
-    followees.include?(user)
+    following.include?(user)
   end
 
   def is_followed_by?(user)
