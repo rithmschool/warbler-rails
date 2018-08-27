@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :followers, through: :followee_relationships, source: :follower
   has_many :following, through: :follower_relationships, source: :followee
 
+  before_validation { self.image_url = "/images/default-pic.png" if image_url.blank? }
+
   def follow(user)
     following << user
   end
