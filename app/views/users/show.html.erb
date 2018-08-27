@@ -1,6 +1,6 @@
 <div class="col-sm-6">
   <ul class="list-group" id="messages">
-    <% for message in @user.most_recent_messages %>
+    <% @user.most_recent_messages.each do |message| %>
       <li class="list-group-item">
         <%= link_to "", message_path(message), class: "message-link" %>
         <%= link_to user_path(@user) do %>

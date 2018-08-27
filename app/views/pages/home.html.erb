@@ -6,10 +6,7 @@
         <div class="image-wrapper">
           <%= image_tag "warbler-hero", class: "card-hero" %>
         </div>
-        <%= link_to user_path(current_user), class: "card-link" do %>
-          <%= image_tag current_user.image_url, class: "card-image" %>
-          <p>@<%= current_user.username %></p>
-        <% end %>
+        <%= render "shared/user_card", user: current_user %>
         <ul class="user-stats nav nav-pills">
           <li class="stat">
             <p class="small">Messages</p>

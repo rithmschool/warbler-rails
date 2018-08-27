@@ -12,10 +12,7 @@
                   <%= image_tag "warbler-hero", class: "card-hero" %>
                 </div>
                 <div class="card-contents">
-                  <%= link_to user_path(user), class: "card-link" do %>
-                    <%= image_tag user.image_url, class: "card-image" %>
-                    <p>@<%= user.username %></p>
-                  <% end %>
+                  <%= render "shared/user_card", user: user %>
                   <% if current_user %>
                     <%= render "shared/follow_buttons", other_user: user %>
                   <% end %>

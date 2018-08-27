@@ -1,6 +1,6 @@
 <div class="col-sm-9">
   <div class="row">
-    <% for followee in @user.following %>
+    <% @user.following.each do |followee| %>
       <div class="col-lg-4 col-md-6 col-12">
         <div class="card user-card">
           <div class="card-inner">
@@ -8,10 +8,7 @@
               <%= image_tag "warbler-hero", class: "card-hero" %>
             </div>
             <div class="card-contents">
-              <%= link_to user_path(followee), class: "card-link" do %>
-                <%= image_tag followee.image_url, class: "card-image" %>
-                <p>@<%= followee.username %></p>
-              <% end %>
+              <%= render "shared/user_card", user: followee %>
               <%= render "shared/follow_buttons", other_user: followee %>
             </div>
           </div>
