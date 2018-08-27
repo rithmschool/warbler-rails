@@ -8,7 +8,7 @@
               <%= image_tag "warbler-hero", class: "card-hero" %>
             </div>
             <div class="card-contents">
-              <%= link_to user_path(followee.id), class: "card-link" do %>
+              <%= link_to user_path(followee), class: "card-link" do %>
                 <%= image_tag followee.image_url, class: "card-image" %>
                 <p>@<%= followee.username %></p>
               <% end %>

@@ -6,7 +6,7 @@
         <div class="image-wrapper">
           <%= image_tag "warbler-hero", class: "card-hero" %>
         </div>
-        <%= link_to user_path(current_user.id), class: "card-link" do %>
+        <%= link_to user_path(current_user), class: "card-link" do %>
           <%= image_tag current_user.image_url, class: "card-image" %>
           <p>@<%= current_user.username %></p>
         <% end %>
@@ -14,19 +14,19 @@
           <li class="stat">
             <p class="small">Messages</p>
             <h4>
-              <%= link_to current_user.messages.count, user_path(current_user.id), class: "card-link" %>
+              <%= link_to current_user.messages.count, user_path(current_user), class: "card-link" %>
             </h4>
           </li>
           <li class="stat">
             <p class="small">Following</p>
             <h4>
-              <%= link_to current_user.following.count, following_user_path(current_user.id) %>
+              <%= link_to current_user.following.count, following_user_path(current_user) %>
             </h4>
           </li>
           <li class="stat">
             <p class="small">Followers</p>
             <h4>
-              <%= link_to current_user.followers.count, followers_user_path(current_user.id) %>
+              <%= link_to current_user.followers.count, followers_user_path(current_user) %>
             </h4>
           </li>
         </ul>
@@ -37,12 +37,12 @@
     <ul class="list-group" id="messages">
       <% @messages.each do |message| %>
       <li class="list-group-item">
-        <%= link_to '', message_path(message.id), class: "message-link" %>
-        <%= link_to user_path(message.user.id) do %>
+        <%= link_to '', message_path(message), class: "message-link" %>
+        <%= link_to user_path(message.user) do %>
           <%= image_tag message.user.image_url, class: "timeline-image" %>
         <% end %>
         <div class="message-area">
-          <%= link_to "@#{message.user.username}", user_path(message.user.id) %>
+          <%= link_to "@#{message.user.username}", user_path(message.user) %>
           <span class="text-muted"><%= message.date %></span>
           <p><%= message.text %></p>
         </div>

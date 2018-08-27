@@ -3,15 +3,15 @@
   <div class="col-md-6">
     <ul class="list-group no-hover" id="messages">
       <li class="list-group-item">
-        <%= link_to user_path(@message.user.id) do %>
+        <%= link_to user_path(@message.user) do %>
           <%= image_tag @message.user.image_url, class: "timeline-image" %>
         <% end %>
         <div class="message-area">
           <div class="message-heading">
-            <%= link_to "@#{@message.user.username}", user_path(@message.user.id) %>
+            <%= link_to "@#{@message.user.username}", user_path(@message.user) %>
             <% if current_user %>
               <% if current_user.id == @message.user.id %>
-                <%= link_to "Delete", message_path(@message.id), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+                <%= link_to "Delete", message_path(@message), method: :delete, class: "btn btn-outline-danger btn-sm" %>
               <% else %>
                 <%= render "shared/follow_buttons", other_user: @message.user %>
               <% end %>
