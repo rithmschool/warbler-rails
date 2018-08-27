@@ -1,24 +1,27 @@
-# README
+# Warbler
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Twitter clone with a Rithm spin - Rails edition!
 
-Things you may want to cover:
+### Installation
 
-* Ruby version
+Clone the repo and `cd` into it. From the root of the project:
 
-* System dependencies
+```sh
+# install all dependencies
+bundle install
 
-* Configuration
+# create database
+rake db:create
 
-* Database creation
+# migrate database to latest version
+rake db:migrate
 
-* Database initialization
+# seed database with dummy data
+# (this will take a while)
+rake db:seed
 
-* How to run the test suite
+# start rails server!
+rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You may wish to compare the code here with the [Python version.](https://github.com/rithmschool/warbler)
