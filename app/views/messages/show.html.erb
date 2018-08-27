@@ -12,15 +12,8 @@
             <% if current_user %>
               <% if current_user.id == @message.user.id %>
                 <%= link_to "Delete", message_path(@message.id), method: :delete, class: "btn btn-outline-danger btn-sm" %>
-              <% elsif current_user.is_following?(@message.user) %>
-                <%= form_for current_user.followee_relationships.find_by(followee_id: @message.user.id), method: :delete do |f| %>
-                  <%= f.submit "Unfollow", class: "btn btn-primary btn-sm" %>
-                <% end %>
               <% else %>
-                <%= form_for current_user.follower_relationships.new do |f| %>
-                  <%= hidden_field_tag :followee_id, @message.user.id %>
-                  <%= f.submit "Follow", class: "btn btn-outline-primary btn-sm" %>
-                <% end %>
+                <%= render "shared/follow_buttons", other_user: @message.user %>
               <% end %>
             <% end %>
           </div>

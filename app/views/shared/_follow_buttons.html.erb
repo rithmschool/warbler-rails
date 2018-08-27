@@ -1,0 +1,10 @@
+<% if current_user.is_following?(other_user) %>
+  <%= form_for current_user.followee_relationships.find_by(followee_id: other_user.id), method: :delete do |f| %>
+    <%= f.submit "Unfollow", class: "btn btn-primary btn-sm" %>
+  <% end %>
+<% else %>
+  <%= form_for current_user.follower_relationships.new do |f| %>
+    <%= hidden_field_tag :followee_id, other_user.id %>
+    <%= f.submit "Follow", class: "btn btn-outline-primary btn-sm" %>
+  <% end %>
+<% end %>
