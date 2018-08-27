@@ -1,5 +1,5 @@
 <% content_for :user_page do %>
-  <div id="warbler-hero" class="full-width" style="background-image: url('/images/warbler-hero.jpg');"></div>
+  <div id="warbler-hero" class="full-width" style="background-image: url('<%= image_path("warbler-hero")%>');"></div>
   <%= image_tag @user.image_url, id: "profile-avatar" %>
   <div class="row full-width">
     <div class="container">
@@ -33,16 +33,7 @@
                 <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-secondary" %>
                 <%= link_to "Delete Profile", cancel_user_registration_path, class: "btn btn-outline-danger ml-2"%>
               <% elsif current_user %>
-                <% if current_user.is_following?(@user) %>
-                  <%= form_for current_user.followee_relationships.find_by(followee_id: @user.id), method: :delete do |f| %>
-                    <%= f.submit "Unfollow", class: "btn btn-primary" %>
-                  <% end %>
-                <% else %>
-                  <%= form_for current_user.follower_relationships.new do |f| %>
-                    <%= hidden_field_tag :followee_id, @user.id %>
-                    <%= f.submit "Follow", class: "btn btn-outline-primary" %>
-                  <% end %>
-                <% end %>
+                <%= render "shared/follow_buttons", other_user: @user %>
               <% end %>
             </div>
           </ul>
