@@ -30,4 +30,8 @@ class User < ApplicationRecord
     followers.include?(user)
   end
 
+  def most_recent_messages
+    messages.order(created_at: :desc)
+  end
+
 end
