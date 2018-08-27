@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
 
+  get "/search", to: "pages#search"
   root to: "pages#home"
 end
