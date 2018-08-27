@@ -1,0 +1,22 @@
+<div class="col-sm-9">
+  <div class="row">
+    <% for follower in @user.followers %>
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="card user-card">
+          <div class="card-inner">
+            <div class="image-wrapper">
+              <%= image_tag "warbler-hero", class: "card-hero" %>
+            </div>
+            <div class="card-contents">
+              <%= link_to user_path(follower.id), class: "card-link" do %>
+                <%= image_tag follower.image_url, class: "card-image" %>
+                <p>@<%= follower.username %></p>
+              <% end %>
+              <%= render "shared/follow_buttons", other_user: follower %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

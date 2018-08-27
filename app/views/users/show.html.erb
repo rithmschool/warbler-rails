@@ -1,2 +1,17 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="col-sm-6">
+  <ul class="list-group" id="messages">
+    <% for message in @user.most_recent_messages %>
+      <li class="list-group-item">
+        <%= link_to "", message_path(message.id), class: "message-link" %>
+        <%= link_to user_path(@user.id) do %>
+          <%= image_tag @user.image_url, class: "timeline-image" %>
+        <% end %>
+        <div class="message-area">
+          <%= link_to "@#{@user.username}", user_path(@user.id) %>
+          <span class="text-muted"><%= message.date %></span>
+          <p><%= message.text %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
