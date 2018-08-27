@@ -31,7 +31,7 @@
             <div class="ml-auto">
               <% if current_user && current_user.id == @user.id %>
                 <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-secondary" %>
-                <%= link_to "Delete Profile", cancel_user_registration_path, class: "btn btn-outline-danger ml-2"%>
+                <%= link_to "Delete Profile", user_registration_path, class: "btn btn-outline-danger ml-2", data: { confirm: "Are you sure?" }, method: "delete" %>
               <% elsif current_user %>
                 <%= render "shared/follow_buttons", other_user: @user %>
               <% end %>
